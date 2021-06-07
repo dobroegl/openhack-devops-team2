@@ -20,25 +20,10 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '2.1.x'
+        dotnet-version: 5.0.x
     - name: Restore dependencies
-      run: dotnet restore ./apis/poi/web/poi.csproj
+      run: dotnet restore
     - name: Build
-      run: dotnet build ./apis/poi/web/poi.csproj --no-restore 
+      run: dotnet build --no-restore
     - name: Test
-      run: dotnet test ./apis/poi/tests/UnitTests/ --logger "console;verbosity=detailed"
-    - name: create issue
-      if: ${{ failure() }}
-      uses: imjohnbo/issue-bot@v3.0
-      with:
-        title: "Build failed"
-        body: |
-          ### Check the pipeline output :)
-
-          ### Discussion Points
-          Add things to discuss below
-        pinned: false
-        close-previous: false
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      run: dotnet test --no-build --verbosity normal

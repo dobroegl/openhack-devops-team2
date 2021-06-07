@@ -1,4 +1,3 @@
- TRIGGGGGGGGER
 # POI Service
 Whatever
 ## Overview
