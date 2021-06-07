@@ -39,4 +39,6 @@ jobs:
           Add things to discuss below
         pinned: false
         close-previous: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
