@@ -21,4 +21,4 @@ jobs:
             login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
             username: ${{ secrets.REGISTRY_USERNAME }}
             password: ${{ secrets.REGISTRY_PASSWORD }}
-        - run: az acr build --image "devopsoh/api-poi:${{ github.sha }}" --registry openhacklw538em3acr --file Dockerfile .
+          run: az acr build --image "devopsoh/api-poi:${{ github.sha }}" --registry openhacklw538em3acr --file Dockerfile .
