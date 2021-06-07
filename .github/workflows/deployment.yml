@@ -15,5 +15,7 @@ jobs:
             creds: ${{ secrets.AZURE_CREDENTIALS }}
         - name: 'change dir'
           run: cd apis/poi/web
+        - name: 'log'
+          run: ls
         - name: 'Build and push image'
           run: az acr build --image "devopsoh/api-poi:${{ github.sha }}" --registry openhacklw538em3acr --file Dockerfile .
