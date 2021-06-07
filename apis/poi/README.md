@@ -1,7 +1,5 @@
-<LETS TRIGGER>
-
 # POI Service
-
+Whatever
 ## Overview
 
 ## Build the Application
