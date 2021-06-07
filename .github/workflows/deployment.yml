@@ -1,6 +1,4 @@
-on:
-  push:
-      branches: [ main ]
+on: [push]
 name: Deployment
 
 jobs:
@@ -15,8 +13,10 @@ jobs:
           uses: azure/login@v1
           with:
             creds: ${{ secrets.AZURE_CREDENTIALS }}
+        - name: 'log'
+          run: ls
         - name: 'change dir'
-          run: cd "openhack-devops-team2/apis/poi/web"
+          run: cd ./openhack-devops-team2/apis/poi/web
         - name: 'Build and push image'
           uses: azure/docker-login@v1
           with:
