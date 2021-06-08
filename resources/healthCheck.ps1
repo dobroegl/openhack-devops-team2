@@ -30,9 +30,10 @@ Param(
     [string] [Parameter(Mandatory=$true)] $Uri,
     [boolean] [Parameter(Mandatory=$false)] $displayUri
     )
+$response = $false
 
-  Write-Host "Waiting for 5 seconds"
-  Start-Sleep -Seconds 5
+while($response -ne $true)
+{
   $R = Invoke-WebRequest -URI $Uri
   $output = ""
   if ($displayUri) {
@@ -42,3 +43,5 @@ Param(
     $output = '{0}' -f($R.StatusCode)
   }
   Write-Output $output
+  $response = $R.StartsWith("20")
+}
