@@ -1,8 +1,4 @@
-on:   
-    push:
-      branches: [ main ]
-      paths:
-        - apis/poi/**
+on: [push]
 name: Deployment poi
 
 jobs:
@@ -36,6 +32,5 @@ jobs:
             slot-name: 'staging'
             images: ' ${{ env.image-name }}:${{ github.sha }}'
         - name: Healthcheck staging slot on Azure Web App
-          shell: pswh
-            run: |
-              .\build.ps1 -Uri ${{ env.app-name }}.${{ env.azure-suffix }}
+          shell: pwsh
+          run: .\build.ps1 -Uri ${{ env.app-name }}-staging.${{ env.azure-suffix }}
