@@ -1,13 +1,11 @@
-on:   
-    push:
-      branches: [ main ]
-      paths:
-        - apis/poi/**
+on: [push]
 name: Deployment poi
 
 jobs:
     build-and-deploy-acr:
         runs-on: ubuntu-latest
+        environment:
+            name: poi-staging
         env:
            working-directory: ./apis/poi/web
            image-name: "devopsoh/api-poi"
