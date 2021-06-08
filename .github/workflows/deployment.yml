@@ -19,15 +19,19 @@ jobs:
         - name: 'Build and push image'
           run: az acr build --image "devopsoh/api-poi:${{ github.sha }}" --registry openhacklw538em3acr --file Dockerfile .
     publish-app-service:
-        needs: build-and-deploy-acr
+        #needs: build-and-deploy-acr
         runs-on: ubuntu-latest
         steps:
+         - name: 'Login via Azure CLI'
+           uses: azure/login@v1
+           with:
+             creds: ${{ secrets.AZURE_CREDENTIALS }}
          - name: 'Deploy to Azure Container Instances'
            uses: 'azure/aci-deploy@v1'
            with:
                 resource-group: ${{ secrets.RESOURCE_GROUP }}
                 dns-name-label: ${{ secrets.RESOURCE_GROUP }}${{ github.run_number }}
-                image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/api-poi:${{ github.sha }}
+                image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/api-poi:10
                 registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
                 registry-username: ${{ secrets.REGISTRY_USERNAME }}
                 registry-password: ${{ secrets.REGISTRY_PASSWORD }}
