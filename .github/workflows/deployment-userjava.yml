@@ -1,8 +1,4 @@
-on:   
-    push:
-      branches: [ main ]
-      paths:
-        - apis/user-java/**
+on: [push]
 name: Deployment userjava
 
 jobs:
