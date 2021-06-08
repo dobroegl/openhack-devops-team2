@@ -3,7 +3,7 @@ on:
       branches: [ main ]
       paths:
         - apis/user-java/**
-name: Deployment
+name: Deployment userjava
 
 jobs:
     build-and-deploy-acr:

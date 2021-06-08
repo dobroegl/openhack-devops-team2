@@ -3,7 +3,7 @@ on:
       branches: [ main ]
       paths:
         - apis/trips/**
-name: Deployment
+name: Deployment trips
 
 jobs:
     build-and-deploy-acr:
