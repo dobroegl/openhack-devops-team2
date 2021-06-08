@@ -14,7 +14,7 @@ jobs:
            app-name: "openhacklw538em3poi"
         defaults:
             run:
-                working-directory: $working-directory
+                working-directory:  ${{ env.working-directory }}
         steps:
         - name: 'Checkout GitHub Action'
           uses: actions/checkout@main
@@ -23,7 +23,7 @@ jobs:
           with:
             creds: ${{ secrets.AZURE_CREDENTIALS }}
         - name: 'Build and push image'
-          run: az acr build --image "$image-name:${{ github.sha }}" --registry openhacklw538em3acr --file Dockerfile .
+          run: az acr build --image "${{ env.image-name }}:${{ github.sha }}" --registry openhacklw538em3acr --file Dockerfile .
         - name: 'Login via Azure CLI'
           uses: azure/login@v1
           with:
@@ -31,6 +31,6 @@ jobs:
         - name: Deploy to Azure Web App
           uses: azure/webapps-deploy@v2
           with:
-            app-name: $app-name
+            app-name:  ${{ env.app-name }}
             slot-name: 'staging'
-            images: '$image-name:${{ github.sha }}'
+            images: ' ${{ env.image-name }}:${{ github.sha }}'
