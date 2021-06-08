@@ -31,6 +31,3 @@ jobs:
             app-name:  ${{ env.app-name }}
             slot-name: 'staging'
             images: ' ${{ env.image-name }}:89d8a7dfd14922f95c79bfed35f3107d388dc7b5' #' ${{ env.image-name }}:${{ github.sha }}'
-        - name: Healthcheck staging slot on Azure Web App
-          shell: pwsh
-          run: ./../../../resources/healthCheck.ps1 -Uri ${{ env.app-name }}-staging.${{ env.azure-suffix }}/api/healthcheck/poi
