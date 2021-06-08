@@ -33,7 +33,7 @@ jobs:
       with:
         title: "Build failed"
         body: |
-          ### Check the pipeline output :)
+          ### Check the pipeline output :) - super meaningful comment
 
           ### Discussion Points
           Add things to discuss below
