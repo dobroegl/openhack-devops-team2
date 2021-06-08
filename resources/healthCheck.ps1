@@ -31,8 +31,8 @@ Param(
     [boolean] [Parameter(Mandatory=$false)] $displayUri
     )
 
-  Write-Host "Waiting for 20 seconds"
-  Start-Sleep -Seconds 20
+  Write-Host "Waiting for 5 seconds"
+  Start-Sleep -Seconds 5
   $R = Invoke-WebRequest -URI $Uri
   $output = ""
   if ($displayUri) {
