@@ -1,6 +1,6 @@
- TRIGGGGGGGGER
+This is the readme of the best api :D 
 # POI Service
-Whatever
+
 ## Overview
 
 ## Build the Application
