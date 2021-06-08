@@ -1,4 +1,8 @@
-on: [push]
+on:   
+    push:
+      branches: [ main ]
+      paths:
+        - apis/poi/**
 name: Deployment poi
 
 jobs:
