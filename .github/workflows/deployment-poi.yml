@@ -34,3 +34,4 @@ jobs:
             app-name:  ${{ env.app-name }}
             slot-name: 'staging'
             images: ' ${{ env.image-name }}:${{ github.sha }}'
+        - name:
