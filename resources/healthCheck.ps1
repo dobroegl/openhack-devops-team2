@@ -32,6 +32,7 @@ Param(
     )
 $response = $false
 
+Write-Host "Checking health of the api"
 while($response -ne $true)
 {
   $R = Invoke-WebRequest -URI $Uri
