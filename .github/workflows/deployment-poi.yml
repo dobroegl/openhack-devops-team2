@@ -3,6 +3,8 @@ name: Deployment poi
 
 jobs:
     build-and-deploy-acr:
+        environment:
+            name: poi-staging
         runs-on: ubuntu-latest
         env:
            working-directory: ./apis/poi/web
@@ -31,3 +33,19 @@ jobs:
             app-name:  ${{ env.app-name }}
             slot-name: 'staging'
             images: ' ${{ env.image-name }}:89d8a7dfd14922f95c79bfed35f3107d388dc7b5' #' ${{ env.image-name }}:${{ github.sha }}'
+    deploy-to-prod:
+        environment:
+            name: poi-production
+        runs-on: ubuntu-latest
+        needs: build-and-deploy-acr
+        env:
+           image-name: "devopsoh/api-poi"
+           app-name: "openhacklw538em3poi"
+           azure-suffix: "azurewebsites.net"
+        defaults:
+            run:
+                working-directory: ./resources
+        steps:
+        - name: 'Healthcheck the staging slot deployment'
+          shell: pwsh
+          run: ./healthCheck.ps1 -Uri ${{ env.app-name }}-staging.${{ env.azure-suffix }}/api/healthcheck/poi
