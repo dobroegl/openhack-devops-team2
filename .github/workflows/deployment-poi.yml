@@ -1,8 +1,4 @@
-on:   
-    push:
-      branches: [ main ]
-      paths:
-        - apis/poi/**
+on: [push]
 name: Deployment poi
 
 jobs:
@@ -14,8 +10,10 @@ jobs:
            app-name: "openhacklw538em3poi"
         defaults:
             run:
-                working-directory: $working-directory
+                working-directory: ./apis/poi/web
         steps:
+        - name: test
+          run: echo $working-directory
         - name: 'Checkout GitHub Action'
           uses: actions/checkout@main
         - name: 'Login via Azure CLI'
