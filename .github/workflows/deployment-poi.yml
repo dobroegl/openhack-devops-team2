@@ -19,8 +19,8 @@ jobs:
           uses: azure/login@v1
           with:
             creds: ${{ secrets.AZURE_CREDENTIALS }}
-        - name: 'Build and push image'
-          run: az acr build --image "${{ env.image-name }}:${{ github.sha }}" --registry openhacklw538em3acr --file Dockerfile .
+        #- name: 'Build and push image'
+          #run: az acr build --image "${{ env.image-name }}:${{ github.sha }}" --registry openhacklw538em3acr --file Dockerfile .
         - name: 'Login via Azure CLI'
           uses: azure/login@v1
           with:
@@ -30,7 +30,7 @@ jobs:
           with:
             app-name:  ${{ env.app-name }}
             slot-name: 'staging'
-            images: ' ${{ env.image-name }}:${{ github.sha }}'
+            images: ' ${{ env.image-name }}:89d8a7dfd14922f95c79bfed35f3107d388dc7b5' #' ${{ env.image-name }}:${{ github.sha }}'
         - name: Healthcheck staging slot on Azure Web App
           shell: pwsh
-          run: .\build.ps1 -Uri ${{ env.app-name }}-staging.${{ env.azure-suffix }}
+          run: ./../../../resources/healthCheck.ps1 -Uri ${{ env.app-name }}-staging.${{ env.azure-suffix }}
