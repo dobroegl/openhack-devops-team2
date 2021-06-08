@@ -48,4 +48,4 @@ jobs:
         steps:
         - name: 'Healthcheck the staging slot deployment'
           shell: pwsh
-          run: ./healthCheck.ps1 -Uri ${{ env.app-name }}-staging.${{ env.azure-suffix }}/api/healthcheck/poi
+          run: ./../../../resources/healthCheck.ps1 -Uri ${{ env.app-name }}-staging.${{ env.azure-suffix }}/api/healthcheck/poi
