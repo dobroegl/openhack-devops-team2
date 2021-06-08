@@ -3,7 +3,7 @@ on:
       branches: [ main ]
       paths:
         - apis/poi/**
-name: Deployment
+name: Deployment poi
 
 jobs:
     build-and-deploy-acr:
